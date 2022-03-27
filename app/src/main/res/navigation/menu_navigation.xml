@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_navigation"
+    app:startDestination="@id/itemExplore">
+    <fragment
+        android:id="@+id/itemExplore"
+        android:name="id.ubaya.a160419033_ubayakost.view.KostListFragment"
+        android:label="Explore"
+        tools:layout="@layout/fragment_kost_list">
+        <action
+            android:id="@+id/action_itemExplore_to_kostDetailFragment"
+            app:destination="@id/kostDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemBooking"
+        android:name="id.ubaya.a160419033_ubayakost.view.BookingFragment"
+        android:label="My Booking"
+        tools:layout="@layout/fragment_booking">
+        <action
+            android:id="@+id/action_itemBooking_to_kostDetailFragment"
+            app:destination="@id/kostDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFAQ"
+        android:name="id.ubaya.a160419033_ubayakost.view.QuestionListFragment"
+        android:label="Frequently Asked Question"
+        tools:layout="@layout/fragment_question_list">
+        <action
+            android:id="@+id/actionQuestionDetail"
+            app:destination="@id/questionDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="id.ubaya.a160419033_ubayakost.view.ProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/kostDetailFragment"
+        android:name="id.ubaya.a160419033_ubayakost.view.KostDetailFragment"
+        android:label="Kost Detail"
+        tools:layout="@layout/fragment_kost_detail">
+        <action
+            android:id="@+id/actionToReviewFragment"
+            app:destination="@id/reviewFragment" />
+        <argument
+            android:name="kostID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/actionToMapFragment"
+            app:destination="@id/itemMap" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionDetailFragment"
+        android:name="id.ubaya.a160419033_ubayakost.view.QuestionDetailFragment"
+        android:label="Questions"
+        tools:layout="@layout/fragment_question_detail">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="id.ubaya.a160419033_ubayakost.view.ReviewFragment"
+        android:label="Review"
+        tools:layout="@layout/fragment_review" >
+        <argument android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemMap"
+        android:name="id.ubaya.a160419033_ubayakost.view.MapFragment"
+        android:label="Location"
+        tools:layout="@layout/fragment_map" >
+        <argument
+            android:name="x"
+            android:defaultValue="-7.3198136612490625" />
+        <argument
+            android:name="y"
+            android:defaultValue="112.76811956063706" />
+        <argument
+            android:name="place"
+            app:argType="string"
+            android:defaultValue="UBAYA" />
+    </fragment>
+</navigation>

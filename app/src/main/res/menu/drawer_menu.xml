@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemExplore"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Explore"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemBooking"
+        android:icon="@drawable/ic_baseline_book_24"
+        android:title="My Booking"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemFAQ"
+        android:icon="@drawable/ic_baseline_question_answer_24"
+        android:title="FAQ"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemMap"
+        android:icon="@drawable/ic_baseline_pin_drop_24"
+        android:title="UBAYA Location"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemProfile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="My Profile"
+        app:showAsAction="always" />
+</menu>
