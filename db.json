@@ -149,14 +149,14 @@
         {
             "faqId": 3,
             "id": 1,
-            "question": "When will Travelio refund my payment when my order is not finally confirmed?",
+            "question": "When will UbayaKost refund my payment when my order is not finally confirmed?",
             "answer": "For credit card payments, we only hold it for pre-authorization and when your order is not confirmed, we will release your credit card information. While payments using bank transfer, we will make a full refund within 5 - 10 days after your order is not confirmed."
         },
         {
             "faqId": 3,
             "id": 2,
-            "question": "When will Travelio refund the deposit payment?",
-            "answer": "The refund deposit process for daily orders using bank transfer or virtual account is estimated to be received again by the customer no later than 5 working days after the bank data is confirmed. A notification will be sent to your email upon success (make sure the registered contact details are active). The refund deposit process for long-term bookings can only be processed after the invoice is issued from Building Management. The invoice will be used to calculate usage during your rental at the Travelio unit. In general, the invoice will be issued on the 5-10 day of each month. After the invoice is issued, UbayaKost takes approximately 7 working days for detailed calculations. Please be willing to wait for the process."
+            "question": "When will UbayaKost refund the deposit payment?",
+            "answer": "The refund deposit process for daily orders using bank transfer or virtual account is estimated to be received again by the customer no later than 5 working days after the bank data is confirmed. The invoice will be used to calculate usage during your rental at the Travelio unit. After the invoice is issued, UbayaKost takes approximately 7 working days for detailed calculations. Please be willing to wait for the process."
         }
     ]
 }
