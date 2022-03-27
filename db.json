@@ -12,14 +12,7 @@
             "fasilitas": "K. Mandi Dalam, AC, Kloset Duduk, Kasur, WiFi",
             "peraturan": "Akses 24 Jam, Dilarang merokok di kamar, Lawan jenis dilarang ke kamar",
             "x": "-7.3180616",
-            "y": "112.7648088",
-            "reviews" : [
-                {
-                    "id": 1,
-                    "name": "Anonim",
-                    "review": "Lumayan bagus, ramah, dan dekat kemana- mana"
-                }
-            ]
+            "y": "112.7648088"
         },
         {
             "id": 2,
@@ -33,14 +26,7 @@
             "fasilitas": "K. Mandi Dalam, Kasur, WiFi, Kloset Jongkok, AC",
             "peraturan": "Lawan jenis dilarang ke kamar, Dilarang bawa hewan, Maks. 1 orang/kamar",
             "x": "-7.3207882037367",
-            "y": "112.76493284851",
-            "reviews" : [
-                {
-                    "id": 1,
-                    "name": "Anonim",
-                    "review": "Kos dekat dengan kampus"
-                }
-            ]
+            "y": "112.76493284851"
         },
         {
             "id": 3,
@@ -54,14 +40,7 @@
             "fasilitas": "Kasur, WiFi, Kloset Duduk, AC, K.Mandi Dalam",
             "peraturan": "Akses 24 Jam, Maks. 2 orang/kamar",
             "x": "-7.3215314368301",
-            "y": "112.7689229697",
-            "reviews" : [
-                {
-                    "id": 1,
-                    "name": "Anonim",
-                    "review": "Fasilitas memuaskan"
-                }
-            ]
+            "y": "112.7689229697"
         },
         {
             "id": 4,
@@ -75,79 +54,109 @@
             "fasilitas": "AC, Kasur, WiFi, K.Mandi Dalam, Kloset Duduk",
             "peraturan": "Maks. 2 orang/kamar, Menunjukkan bukti Swab saat check in",
             "x": "-7.3098319",
-            "y": "112.7577472",
-            "reviews" : [
-                {
-                    "id": 1,
-                    "name": "Febira Asrofin",
-                    "review": "Kos dan fasilitas bagus"
-                },
-                {
-                    "id": 2,
-                    "name": "Raymond",
-                    "review": "Kos bagus dan sesuai dengan harga"
-                },
-                {
-                    "id": 3,
-                    "name": "Abdul Rahman",
-                    "review": "Bagus, bersih, dan nyaman"
-                },
-                {
-                    "id": 4,
-                    "name": "Anonim",
-                    "review": "Hunian nyaman dan terletak di perumahan tengah kota dan aman"
-                }
-            ]
+            "y": "112.7577472"
+        }
+    ],
+    "reviews" : [
+        {
+            "kostId": 1,
+            "id": 1,
+            "name": "Michael",
+            "review": "Lumayan bagus, ramah, dan dekat kemana- mana"
+        },
+        {
+            "kostId": 1,
+            "id": 2,
+            "name": "Anonim",
+            "review": "Peralatan cukup lengkap"
+        },
+        {
+            "kostId": 2,
+            "id": 1,
+            "name": "Anonim",
+            "review": "Kos dekat dengan kampus"
+        },
+        {
+            "kostId": 3,
+            "id": 1,
+            "name": "Anonim",
+            "review": "Fasilitas memuaskan"
+        },
+        {
+            "kostId": 4,
+            "id": 1,
+            "name": "Febira Asrofin",
+            "review": "Kos dan fasilitas bagus"
+        },
+        {
+            "kostId": 4,
+            "id": 2,
+            "name": "Raymond",
+            "review": "Kos bagus dan sesuai dengan harga"
+        },
+        {
+            "kostId": 4,
+            "id": 3,
+            "name": "Abdul Rahman",
+            "review": "Bagus, bersih, dan nyaman"
+        },
+        {
+            "kostId": 4,
+            "id": 4,
+            "name": "Anonim",
+            "review": "Hunian nyaman dan terletak di perumahan tengah kota dan aman"
         }
     ],
     "faq": [
         {
-            "id": 1,
-            "topic": "Booking",
-            "questions": [
-                {
-                    "id": 1,
-                    "question": "How do I make an order via UbayaKost?",
-                    "answer": "Download the UbayaKost app, then Choose the kost that suits your needs, and click booking"
-                },
-                {
-                    "id": 2,
-                    "question": "I am not experienced in booking accommodation online. Is there any help available to me?",
-                    "answer": "For questions or other information, please contact us via email"
-                }
-            ]
+            "id": "1",
+            "topic": "Booking"
         },
         {
             "id": 2,
-            "topic": "Additional Fees",
-            "questions": [
-                {
-                    "id": 1,
-                    "question": "Are there any additional fees I have to pay?",
-                    "answer": "You are only required to pay an additional fee if you use additional facilities or services provided by the accommodation where you are staying. In this case, additional costs are paid directly to the accommodation."
-                },
-                {
-                    "id": 2,
-                    "question": "Will I be charged for other factors such as credit card fees?",
-                    "answer": "UbayaKost will not charge additional fees for all types of payment methods selected. However, this does not include possible additional fees"
-                }
-            ]
+            "topic": "Additional Fees"
         },
         {
             "id": 3,
-            "topic": "Refund Policy",
-            "questions": [
-                {
-                    "id": 1,
-                    "question": "When will Travelio refund my payment when my order is not finally confirmed?",
-                    "answer": "For credit card payments, we only hold it for pre-authorization and when your order is not confirmed, we will release your credit card information. While payments using bank transfer, we will make a full refund within 5 - 10 days after your order is not confirmed."
-                },
-                {
-                    "id": 2,
-                    "question": "When will Travelio refund the deposit payment?",
-                    "answer": "The refund deposit process for daily orders using bank transfer or virtual account is estimated to be received again by the customer no later than 5 working days after the bank data is confirmed. A notification will be sent to your email upon success (make sure the registered contact details are active). The refund deposit process for long-term bookings can only be processed after the invoice is issued from Building Management. The invoice will be used to calculate usage during your rental at the Travelio unit. In general, the invoice will be issued on the 5-10 day of each month. After the invoice is issued, UbayaKost takes approximately 7 working days for detailed calculations. Please be willing to wait for the process."
-                }
-            ]
+            "topic": "Refund Policy"
+        }
+    ],
+    "questions": [
+        {
+            "faqId": 1,
+            "id": 1,
+            "question": "How do I make an order via UbayaKost?",
+            "answer": "Download the UbayaKost app, then Choose the kost that suits your needs, and click booking"
+        },
+        {
+            "faqId": 1,
+            "id": 2,
+            "question": "I am not experienced in booking accommodation online. Is there any help available to me?",
+            "answer": "For questions or other information, please contact us via email"
+        },
+        {
+            "faqId": 2,
+            "id": 1,
+            "question": "Are there any additional fees I have to pay?",
+            "answer": "You are only required to pay an additional fee if you use additional facilities or services provided by the accommodation where you are staying. In this case, additional costs are paid directly to the accommodation."
+        },
+        {
+            "faqId": 2,
+            "id": 2,
+            "question": "Will I be charged for other factors such as credit card fees?",
+            "answer": "UbayaKost will not charge additional fees for all types of payment methods selected. However, this does not include possible additional fees"
+        },
+        {
+            "faqId": 3,
+            "id": 1,
+            "question": "When will Travelio refund my payment when my order is not finally confirmed?",
+            "answer": "For credit card payments, we only hold it for pre-authorization and when your order is not confirmed, we will release your credit card information. While payments using bank transfer, we will make a full refund within 5 - 10 days after your order is not confirmed."
+        },
+        {
+            "faqId": 3,
+            "id": 2,
+            "question": "When will Travelio refund the deposit payment?",
+            "answer": "The refund deposit process for daily orders using bank transfer or virtual account is estimated to be received again by the customer no later than 5 working days after the bank data is confirmed. A notification will be sent to your email upon success (make sure the registered contact details are active). The refund deposit process for long-term bookings can only be processed after the invoice is issued from Building Management. The invoice will be used to calculate usage during your rental at the Travelio unit. In general, the invoice will be issued on the 5-10 day of each month. After the invoice is issued, UbayaKost takes approximately 7 working days for detailed calculations. Please be willing to wait for the process."
         }
     ]
 }
