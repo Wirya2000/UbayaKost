@@ -6,7 +6,7 @@
     <data>
         <variable
             name="kost"
-            type="Kost" />
+            type="id.ubaya.a160419033_ubayakost.model.Kost" />
         <variable
             name="listener"
             type="id.ubaya.a160419033_ubayakost.view.KostItemClickListener" />
@@ -95,9 +95,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@{kost.gender}"
                     android:background="@drawable/textview_border"
                     android:padding="4dp"
+                    android:text="@{kost.gender}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageKost" />
 

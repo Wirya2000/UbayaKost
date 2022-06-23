@@ -61,7 +61,7 @@ class KostDetailFragment : Fragment() {
             textLuasKamar.text = it.luas
             textPeraturan.text = it.peraturan
             buttonReview.setOnClickListener {
-                val action = KostDetailFragmentDirections.actionToReviewFragment(kost.id)
+                val action = KostDetailFragmentDirections.actionToReviewFragment(kost.kostId)
                 Navigation.findNavController(it).navigate(action)
             }
             textBookingPrice.text = "Rp ${it.price} / bulan"

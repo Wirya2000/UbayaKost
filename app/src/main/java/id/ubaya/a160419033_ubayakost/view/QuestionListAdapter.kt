@@ -22,7 +22,8 @@ class QuestionListAdapter(val faqList: ArrayList<FAQ>) :
     }
 
     override fun onBindViewHolder(holder: FAQViewHolder, position: Int) {
-        holder.view.
+        holder.view.faq = faqList[position]
+        holder.view.listener = this
 //        val faq = faqList[position]
 //        with(holder.view) {
 //            textTopic.text = faq.topic
