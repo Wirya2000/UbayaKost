@@ -11,7 +11,9 @@
         tools:layout="@layout/fragment_kost_list">
         <action
             android:id="@+id/action_itemExplore_to_kostDetailFragment"
-            app:destination="@id/kostDetailFragment" />
+            app:destination="@id/kostDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/itemBooking"
@@ -20,7 +22,9 @@
         tools:layout="@layout/fragment_booking">
         <action
             android:id="@+id/action_itemBooking_to_kostDetailFragment"
-            app:destination="@id/kostDetailFragment" />
+            app:destination="@id/kostDetailFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/itemFAQ"
@@ -29,7 +33,9 @@
         tools:layout="@layout/fragment_question_list">
         <action
             android:id="@+id/actionQuestionDetail"
-            app:destination="@id/questionDetailFragment" />
+            app:destination="@id/questionDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/itemProfile"
@@ -43,13 +49,17 @@
         tools:layout="@layout/fragment_kost_detail">
         <action
             android:id="@+id/actionToReviewFragment"
-            app:destination="@id/reviewFragment" />
+            app:destination="@id/reviewFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
         <argument
             android:name="kostID"
             app:argType="integer" />
         <action
             android:id="@+id/actionToMapFragment"
-            app:destination="@id/itemMap" />
+            app:destination="@id/itemMap"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/questionDetailFragment"
