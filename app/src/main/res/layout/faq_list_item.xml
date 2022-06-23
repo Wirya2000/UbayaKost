@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="faq"
+            type="Faq" />
+        <variable
+            name="listener"
+            type="id.ubaya.a160419033_ubayakost.view.FaqItemClickListener"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +39,8 @@
                     android:id="@+id/textTopic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Topic"
+                    android:text="@{faq.topic}"
+                    android:onClick="@{(v) -> listener.onItemClick(v)}"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
