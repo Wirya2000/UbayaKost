@@ -1,2 +1,5 @@
-# advnative160419033_uts
-Project Made By Joshua Albertus Samariyanto with NRP: 160419033
+# ubayakost_uas
+Project Made By:
+1. Bryan Immanuel - 160419015
+2. Joshua Albertus Samariyanto - 160419033
+3. Wirya Wonggo - 160419036
