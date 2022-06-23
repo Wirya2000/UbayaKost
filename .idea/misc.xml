@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/UbayaKost/app/src/main/res/layout/activity_main.xml" value="0.22780797101449277" />
+        <entry key="..\:/Android Studio/UbayaKost/app/src/main/res/layout/faq_list_item.xml" value="0.22780797101449277" />
+        <entry key="..\:/Android Studio/UbayaKost/app/src/main/res/layout/fragment_booking.xml" value="0.22780797101449277" />
+        <entry key="..\:/Android Studio/UbayaKost/app/src/main/res/layout/fragment_kost_detail.xml" value="0.22780797101449277" />
         <entry key="..\:/UBAYA/AndroidStudioProject/AdvancedNativeProject/UTS/160419033_UbayaKost/app/src/main/res/drawable/ic_baseline_book_24.xml" value="0.2265" />
         <entry key="..\:/UBAYA/AndroidStudioProject/AdvancedNativeProject/UTS/160419033_UbayaKost/app/src/main/res/drawable/textview_border.xml" value="0.2265" />
         <entry key="..\:/UBAYA/AndroidStudioProject/AdvancedNativeProject/UTS/160419033_UbayaKost/app/src/main/res/layout/activity_main.xml" value="0.1911231884057971" />
