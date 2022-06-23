@@ -11,7 +11,11 @@ import android.view.ViewGroup
 import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import id.ubaya.a160419033_ubayakost.R
+import id.ubaya.a160419033_ubayakost.util.BookingWorker
 import id.ubaya.a160419033_ubayakost.util.loadImage
 import id.ubaya.a160419033_ubayakost.viewmodel.KostDetailViewModel
 import kotlinx.android.synthetic.main.fragment_kost_detail.*
@@ -62,10 +66,17 @@ class KostDetailFragment : Fragment() {
             }
             textBookingPrice.text = "Rp ${it.price} / bulan"
             buttonBooking.setOnClickListener {
-                val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
-                sharedPreferences.edit {
-                    putString(SHARED_BOOKING_ID, kost.id.toString())
-                }
+//                val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
+//                sharedPreferences.edit {
+//                    putString(SHARED_BOOKING_ID, kost.id.toString())
+//                }
+                val bookingWorkRequest = OneTimeWorkRequestBuilder<BookingWorker>()
+                    .setInputData(workDataOf(
+                                    "title" to "Booking has been made",
+                                    "message" to "Don't forget to complete your payment for the booking that you made"))
+                    .build()
+                WorkManager.getInstance(requireContext()).enqueue(bookingWorkRequest)
+
                 val builder = AlertDialog.Builder(context)
                 builder.setMessage("Booking has been made, Please check your booking at My Booking section")
                 builder.setPositiveButton("OK", null)
@@ -73,4 +84,6 @@ class KostDetailFragment : Fragment() {
             }
         }
     }
+
+
 }
