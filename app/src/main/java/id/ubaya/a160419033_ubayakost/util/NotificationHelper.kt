@@ -35,11 +35,19 @@ class NotificationHelper(val context: Context) {
                     Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+        val icon = BitmapFactory.decodeResource(context.resources,
+            R.drawable.logo)
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_baseline_check_circle_24)
+            .setLargeIcon(icon)
             .setContentTitle(title)
             .setContentText(message)
+            .setStyle(
+                NotificationCompat.BigPictureStyle()
+                    .bigPicture(icon)
+                    .bigLargeIcon(null)
+            )
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
