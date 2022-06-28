@@ -10,40 +10,29 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.ubaya.a160419033_ubayakost.model.Review
+import id.ubaya.a160419033_ubayakost.util.buildDb
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class ReviewViewModel(application: Application): AndroidViewModel(application) {
+class ReviewViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
     val reviewsLiveData = MutableLiveData<ArrayList<Review>>()
     val reviewsLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     fun refresh(kostId: Int) {
         reviewsLoadErrorLiveData.value = false
         loadingLiveData.value = false
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url =
-            "https://my-json-server.typicode.com/joshualbertus/advnative160419033_uts/reviews?kostId=${kostId}"
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {
-                val sType = object : TypeToken<ArrayList<Review>>() {}.type
-                val result = Gson().fromJson<ArrayList<Review>>(it, sType)
-                reviewsLiveData.value = result
-                loadingLiveData.value = false;
-            }, {
-                loadingLiveData.value = false;
-                reviewsLoadErrorLiveData.value = true
-            }
-        ).apply {
-            tag = "TAG"
+        launch {
+            val db = buildDb(getApplication())
+            reviewsLiveData.value = db.reviewDao().selectAllReview(kostId)
         }
-        queue?.add(stringRequest)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
     }
 }

@@ -4,11 +4,31 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import id.ubaya.a160419033_ubayakost.model.Profile
+import id.ubaya.a160419033_ubayakost.util.buildDb
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class ProfileViewModel (application: Application): AndroidViewModel(application) {
+class ProfileViewModel (application: Application): AndroidViewModel(application), CoroutineScope {
     val profileLiveData = MutableLiveData<Profile>()
+    private var job = Job()
 
-    fun fetch(name: String?, hometown: String?, phoneNumber: String? ) {
-        profileLiveData.value = Profile(name, hometown, phoneNumber)
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
+
+    fun fetch(id: String) {
+        launch {
+            val db = buildDb(getApplication())
+            profileLiveData.value = db.userDao().selectProfile(id)
+        }
+    }
+
+    fun update(id: String, name: String, homeTown: String, phoneNumber: String) {
+        launch {
+            val db = buildDb(getApplication())
+            db.profileDao().update(id, name, homeTown, phoneNumber)
+        }
     }
 }

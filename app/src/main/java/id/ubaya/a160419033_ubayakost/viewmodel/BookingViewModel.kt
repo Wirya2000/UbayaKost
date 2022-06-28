@@ -11,31 +11,29 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.ubaya.a160419033_ubayakost.model.Kost
+import id.ubaya.a160419033_ubayakost.util.buildDb
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class BookingViewModel(application: Application): AndroidViewModel(application) {
+class BookingViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
     val bookingLiveData = MutableLiveData<Kost?>()
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     fun fetch(bookingId: String?) {
         if (bookingId == null) {
             bookingLiveData.value = null
         } else {
-            queue = Volley.newRequestQueue(getApplication())
-            val url = "https://my-json-server.typicode.com/joshualbertus/advnative160419033_uts/kosts?id=${bookingId}"
-            val stringRequest = StringRequest(
-                Request.Method.GET, url,
-                {
-                    val sType = object : TypeToken<ArrayList<Kost>>() {}.type
-                    val result = Gson().fromJson<ArrayList<Kost>>(it, sType)
-                    bookingLiveData.value = result[0]
-                }, {
-                    Log.e("lderror", "Live data error")
-                }
-            ).apply{
-                tag = "TAG"
+            launch {
+                val db = buildDb(getApplication())
+                bookingLiveData.value = db.bookingDao().selectBooking(bookingId)
             }
-            queue?.add(stringRequest)
+
         }
     }
 }

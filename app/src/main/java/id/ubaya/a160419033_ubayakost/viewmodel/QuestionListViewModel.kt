@@ -11,39 +11,29 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.ubaya.a160419033_ubayakost.model.FAQ
 import id.ubaya.a160419033_ubayakost.model.Question
+import id.ubaya.a160419033_ubayakost.util.buildDb
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class QuestionListViewModel (application: Application): AndroidViewModel(application) {
+class QuestionListViewModel (application: Application): AndroidViewModel(application), CoroutineScope {
     val faqsLiveData = MutableLiveData<ArrayList<FAQ>>()
     val faqsLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     fun refresh() {
         faqsLoadErrorLiveData.value = false
         loadingLiveData.value = false
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "https://my-json-server.typicode.com/joshualbertus/advnative160419033_uts/faq"
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {
-                val sType = object : TypeToken<ArrayList<FAQ>>() {}.type
-                val result = Gson().fromJson<ArrayList<FAQ>>(it, sType)
-                faqsLiveData.value = result
-                loadingLiveData.value = false;
-            }, {
-                loadingLiveData.value = false;
-                faqsLoadErrorLiveData.value = true
-            }
-        ).apply{
-            tag = "TAG"
+        launch { 
+            val db = buildDb(getApplication())
+            faqsLiveData.value = db.faqDao().selectAllFaq()
         }
-        queue?.add(stringRequest)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
     }
 }
