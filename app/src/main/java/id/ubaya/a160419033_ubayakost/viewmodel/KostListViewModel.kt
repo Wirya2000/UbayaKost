@@ -34,7 +34,7 @@ class KostListViewModel(application: Application): AndroidViewModel(application)
 
        launch {
            val db = buildDb(getApplication())
-           kostsLiveData.value = db
+           kostsLiveData.value = db.kostDao().selectAllKost()
        }
     }
 }

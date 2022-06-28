@@ -21,8 +21,14 @@ class ProfileViewModel (application: Application): AndroidViewModel(application)
     fun fetch(id: String) {
         launch {
             val db = buildDb(getApplication())
-            profileLiveData.value = db
+            profileLiveData.value = db.userDao().selectProfile(id)
         }
+    }
 
+    fun update(id: String, name: String, homeTown: String, phoneNumber: String) {
+        launch {
+            val db = buildDb(getApplication())
+            db.profileDao().update(id, name, homeTown, phoneNumber)
+        }
     }
 }

@@ -10,11 +10,13 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.ubaya.a160419033_ubayakost.model.Kost
 import id.ubaya.a160419033_ubayakost.model.Question
 import id.ubaya.a160419033_ubayakost.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class QuestionDetailViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
@@ -26,6 +28,13 @@ class QuestionDetailViewModel(application: Application): AndroidViewModel(applic
 
     fun fetch(faqId: String) {
         val db = buildDb(getApplication())
-        questionsLiveData.value = db
+        questionsLiveData.value = db.questionDao().selectAllQuestion(faqId)
+    }
+
+    fun addKostToBooking(list: List<Kost>) {
+        launch {
+            val db = buildDb(getApplication())
+            db.bookingDao.insertAll(*list.toTypedArray())
+        }
     }
 }

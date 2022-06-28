@@ -28,7 +28,7 @@ class KostDetailViewModel(application: Application): AndroidViewModel(applicatio
     fun fetch(kostId: String) {
         launch {
             val db = buildDb(getApplication())
-            kostLiveData.value = db
+            kostLiveData.value = db.kostDao().selectKost(kostId)
         }
     }
 }

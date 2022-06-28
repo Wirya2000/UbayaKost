@@ -33,7 +33,7 @@ class QuestionListViewModel (application: Application): AndroidViewModel(applica
 
         launch { 
             val db = buildDb(getApplication())
-            faqsLiveData.value = db
+            faqsLiveData.value = db.faqDao().selectAllFaq()
         }
     }
 }
