@@ -3,7 +3,7 @@ package id.ubaya.a160419033_ubayakost.model
 import androidx.room.*
 
 @Dao
-interface FAQDao {
+interface FaqDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun inserAll(vararg faq: FAQ)
 
