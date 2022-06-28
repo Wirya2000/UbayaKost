@@ -25,7 +25,7 @@ class BookingViewModel(application: Application): AndroidViewModel(application),
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    fun fetch(bookingId: String?) {
+    fun fetch(bookingId: Int?) {
         if (bookingId == null) {
             bookingLiveData.value = null
         } else {

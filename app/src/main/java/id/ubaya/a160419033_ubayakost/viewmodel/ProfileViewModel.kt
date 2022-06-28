@@ -18,7 +18,7 @@ class ProfileViewModel (application: Application): AndroidViewModel(application)
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    fun fetch(id: String) {
+    fun fetch(id: Int) {
         launch {
             val db = buildDb(getApplication())
             profileLiveData.value = db.userDao().selectProfile(id)

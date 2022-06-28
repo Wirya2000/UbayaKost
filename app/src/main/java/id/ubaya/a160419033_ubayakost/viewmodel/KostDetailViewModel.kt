@@ -25,7 +25,7 @@ class KostDetailViewModel(application: Application): AndroidViewModel(applicatio
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    fun fetch(kostId: String) {
+    fun fetch(kostId: Int) {
         launch {
             val db = buildDb(getApplication())
             kostLiveData.value = db.kostDao().selectKost(kostId)
