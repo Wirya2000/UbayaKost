@@ -40,6 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{faq.topic}"
+                    android:tag="@{faq.faqId}"
                     android:onClick="@{(v) -> listener.onItemClick(v)}"
                     android:textSize="20sp"
                     android:textStyle="bold"

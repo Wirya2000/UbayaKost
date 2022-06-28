@@ -10,6 +10,9 @@
         <variable
             name="reviewListener"
             type="id.ubaya.a160419033_ubayakost.view.KostReviewClickListener" />
+        <variable
+            name="bookingListener"
+            type="id.ubaya.a160419033_ubayakost.view.KostBookingClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -178,6 +181,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:text="Booking"
+            android:onClick="@{(v) -> bookingListener.onBookingClick(v, kost)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

@@ -17,7 +17,7 @@ class QuestionDetailViewModel(application: Application): AndroidViewModel(applic
     val TAG = "volleyTag"
     private var queue: RequestQueue? = null
 
-    fun fetch(faqId: String) {
+    fun refresh(faqId: String) {
         queue = Volley.newRequestQueue(getApplication())
         val url = "https://my-json-server.typicode.com/joshualbertus/advnative160419033_uts/questions?faqId=${faqId}"
         val stringRequest = StringRequest(

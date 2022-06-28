@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ubaya.a160419033_ubayakost.R
 import id.ubaya.a160419033_ubayakost.viewmodel.KostListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
+import kotlinx.android.synthetic.main.kost_list_item.*
 
 class KostListFragment : Fragment() {
     private lateinit var viewModel: KostListViewModel
@@ -25,13 +27,13 @@ class KostListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(KostListViewModel::class.java)
         viewModel.refresh()
 
         recView.layoutManager = LinearLayoutManager(context)
         recView.adapter = kostListAdapter
-
-        observeViewModel()
 
         refreshLayout.setOnRefreshListener {
             recView.visibility = View.GONE
@@ -40,6 +42,13 @@ class KostListFragment : Fragment() {
             viewModel.refresh()
             refreshLayout.isRefreshing = false
         }
+
+        cardKost.setOnClickListener {
+            val action = KostListFragmentDirections.actionItemExploreToKostDetailFragment(view.tag.toString().toInt())
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        observeViewModel()
     }
 
     private fun observeViewModel() {

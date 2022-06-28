@@ -9,11 +9,14 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import id.ubaya.a160419033_ubayakost.R
 import id.ubaya.a160419033_ubayakost.viewmodel.QuestionDetailViewModel
+import kotlinx.android.synthetic.main.fragment_kost_list.*
 
 class QuestionDetailFragment : Fragment() {
     private lateinit var viewModel: QuestionDetailViewModel
+    private val questionDetailAdapter: QuestionDetailAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,38 +27,20 @@ class QuestionDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(this).get(QuestionDetailViewModel::class.java)
+        super.onViewCreated(view, savedInstanceState)
 
-        if (arguments != null) {
-            val faqId = QuestionDetailFragmentArgs.fromBundle(requireArguments()).id
-            viewModel.fetch(faqId.toString())
-        }
+        viewModel = ViewModelProvider(this).get(QuestionDetailViewModel::class.java)
+        viewModel.refresh()
+
+        recView.layoutManager = LinearLayoutManager(context)
+        recView.adapter = questionDetailAdapter
 
         observeViewModel()
     }
 
     private fun observeViewModel() {
         viewModel.questionsLiveData.observe(viewLifecycleOwner) {
-            val layout = view?.findViewById<LinearLayout>(R.id.frameLayout2)
-            var arrQuestion: ArrayList<String> = ArrayList()
-
-            for (i in it.indices) {
-                arrQuestion.add(it[i].question)
-                arrQuestion.add(it[i].answer)
-            }
-            for (i in arrQuestion.indices) {
-                var textView = TextView(context)
-                if (i % 2 == 0) {
-                    textView.setText(arrQuestion[i])
-                    textView.setTypeface(null, Typeface.BOLD)
-                } else {
-                    textView.setText(arrQuestion[i])
-                    textView.setTypeface(null, Typeface.NORMAL)
-                }
-                textView.setTextSize(20f)
-                textView.layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-                layout?.addView(textView)
-            }
+            questionDetailAdapter.updateQuestionList(it)
         }
     }
 }

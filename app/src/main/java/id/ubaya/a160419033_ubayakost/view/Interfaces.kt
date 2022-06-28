@@ -1,8 +1,10 @@
 package id.ubaya.a160419033_ubayakost.view
 
 import android.view.View
+import id.ubaya.a160419033_ubayakost.model.Kost
 import android.widget.CompoundButton
 
+// FAQ LIST
 interface FaqItemClickListener {
     fun onItemClick(v: View)
 }
@@ -19,5 +21,5 @@ interface KostReviewClickListener {
 
 // KOST DETAIL
 interface KostBookingClickListener {
-    fun onBookingClick(v:View)
+    fun onBookingClick(v:View, obj:Kost)
 }

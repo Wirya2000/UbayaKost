@@ -43,6 +43,8 @@ class QuestionListAdapter(val faqList: ArrayList<FAQ>) :
     }
 
     override fun onItemClick(v: View) {
-        TODO("Not yet implemented")
+        val faqId = v.tag.toString().toInt()
+        val action = QuestionListFragmentDirections.actionQuestionDetail(faqId)
+        Navigation.findNavController(v).navigate(action)
     }
 }
