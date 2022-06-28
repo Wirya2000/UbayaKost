@@ -50,15 +50,12 @@ data class Review(
     var kostId: Int,
     @ColumnInfo(name="userId")
     var userId: Int,
-    @ColumnInfo(name="name")
-    var name: String,
     @ColumnInfo(name="review")
     var review: String,
-    @ColumnInfo(name="photoUrl")
-    var photoUrl: String,
-    @ColumnInfo(name="alamat")
-    var alamat: String,
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var reviewId: Int = 0
+}
 
 data class UserWithKost(
     @Embedded val user: User,
@@ -92,7 +89,7 @@ data class FAQ(
 @Entity
 data class Question(
     @ColumnInfo(name="faqQuestionId")
-    var faqId: Int,
+    var faqQuestionId: Int,
     @ColumnInfo(name="question")
     var question: Int,
     @ColumnInfo(name="answer")
@@ -117,7 +114,10 @@ data class Booking(
     var kostId: Int,
     @ColumnInfo(name="userId")
     var userId: Int
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var bookingId: Int = 0
+}
 
 data class UserWithKostBooking(
     @Embedded val user: User,
