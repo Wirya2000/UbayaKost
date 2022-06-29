@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class KostListViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
-    val kostsLiveData = MutableLiveData<ArrayList<Kost>>()
+    val kostsLiveData = MutableLiveData<List<Kost>>()
     val kostsLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     private var job = Job()

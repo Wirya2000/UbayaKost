@@ -50,7 +50,7 @@ class ProfileFragment : Fragment(), ProfileUpdateCLickListener {
     }
 
     override fun onUpdateClick(v: View, obj: User) {
-        viewModel.update(obj.name, obj.hometown, obj.phone_number)
+        viewModel.update(obj.userId, obj.name, obj.hometown, obj.phone_number)
         Toast.makeText(v.context, "Profile updated", Toast.LENGTH_SHORT).show()
         Navigation.findNavController(v).popBackStack()
     }

@@ -3,7 +3,7 @@ package id.ubaya.a160419033_ubayakost.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import id.ubaya.a160419033_ubayakost.model.Profile
+import id.ubaya.a160419033_ubayakost.model.User
 import id.ubaya.a160419033_ubayakost.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class ProfileViewModel (application: Application): AndroidViewModel(application), CoroutineScope {
-    val profileLiveData = MutableLiveData<Profile>()
+    val profileLiveData = MutableLiveData<User>()
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
@@ -21,11 +21,11 @@ class ProfileViewModel (application: Application): AndroidViewModel(application)
     fun fetch(id: Int) {
         launch {
             val db = buildDb(getApplication())
-            profileLiveData.value = db.userDao().selectProfile(id)
+            profileLiveData.value = db.profileDao().selectUser(id)
         }
     }
 
-    fun update(id: String, name: String, homeTown: String, phoneNumber: String) {
+    fun update(id: Int, name: String, homeTown: String, phoneNumber: String) {
         launch {
             val db = buildDb(getApplication())
             db.profileDao().update(id, name, homeTown, phoneNumber)

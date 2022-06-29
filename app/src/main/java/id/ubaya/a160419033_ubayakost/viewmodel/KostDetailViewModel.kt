@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.ubaya.a160419033_ubayakost.model.Booking
 import id.ubaya.a160419033_ubayakost.model.Kost
 import id.ubaya.a160419033_ubayakost.util.buildDb
 import kotlinx.coroutines.CoroutineScope
@@ -32,10 +33,10 @@ class KostDetailViewModel(application: Application): AndroidViewModel(applicatio
         }
     }
 
-    fun addKostToBooking(list: List<Kost>) {
+    fun addKostToBooking(obj: Kost) {
         launch {
             val db = buildDb(getApplication())
-            db.bookingDao.insertAll(*list.toTypedArray())
+            db.bookingDao().insertAll(obj)
         }
     }
 }

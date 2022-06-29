@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface BookingDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun inserAll(vararg booking: Booking)
+    suspend fun insertAll(vararg kost: Kost)
 
     @Query("SELECT * FROM booking " +
             "INNER JOIN user ON booking.userId = user.userId " +

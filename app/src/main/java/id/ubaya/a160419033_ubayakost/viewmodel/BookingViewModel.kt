@@ -10,6 +10,8 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.ubaya.a160419033_ubayakost.model.Booking
+import id.ubaya.a160419033_ubayakost.model.BookingDao
 import id.ubaya.a160419033_ubayakost.model.Kost
 import id.ubaya.a160419033_ubayakost.util.buildDb
 import kotlinx.coroutines.CoroutineScope
@@ -19,7 +21,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class BookingViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
-    val bookingLiveData = MutableLiveData<Kost?>()
+    val bookingLiveData = MutableLiveData<Booking?>()
     private var job = Job()
 
     override val coroutineContext: CoroutineContext

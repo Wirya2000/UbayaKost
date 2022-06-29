@@ -51,7 +51,7 @@ data class Review(
     @ColumnInfo(name="userId")
     var userId: Int,
     @ColumnInfo(name="review")
-    var review: String,
+    var review: String
 ) {
     @PrimaryKey(autoGenerate = true)
     var reviewId: Int = 0

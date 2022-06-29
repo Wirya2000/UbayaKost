@@ -19,6 +19,7 @@ import androidx.work.workDataOf
 import id.ubaya.a160419033_ubayakost.R
 import id.ubaya.a160419033_ubayakost.databinding.FragmentKostDetailBinding
 import id.ubaya.a160419033_ubayakost.databinding.KostListItemBinding
+import id.ubaya.a160419033_ubayakost.model.Booking
 import id.ubaya.a160419033_ubayakost.model.Kost
 import id.ubaya.a160419033_ubayakost.util.BookingWorker
 import id.ubaya.a160419033_ubayakost.util.loadImage
@@ -50,7 +51,7 @@ class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClick
 
         if (arguments != null) {
             val kostId = view.tag.toString().toInt()
-            viewModel.fetch(kostId.toString())
+            viewModel.fetch(kostId)
         }
 
         observeViewModel()
@@ -99,5 +100,11 @@ class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClick
     override fun onBookingClick(v: View, obj: Kost) {
         dataBinding.kost = obj
         viewModel.addKostToBooking(dataBinding.kost!!)
+    }
+
+    override fun onReviewClick(v: View) {
+        val reviewId = v.tag.toString().toInt()
+        val action = KostDetailFragmentDirections.actionToReviewFragment(reviewId)
+        Navigation.findNavController(v).navigate(action)
     }
 }
