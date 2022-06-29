@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import id.ubaya.a160419033_ubayakost.databinding.QuestionListItemBinding
 import id.ubaya.a160419033_ubayakost.model.FAQ
+import id.ubaya.a160419033_ubayakost.model.Kost
 import id.ubaya.a160419033_ubayakost.model.Question
 
 class QuestionDetailAdapter (val questionList: ArrayList<Question>):

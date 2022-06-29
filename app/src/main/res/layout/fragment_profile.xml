@@ -7,6 +7,10 @@
         <variable
             name="user"
             type="id.ubaya.a160419033_ubayakost.model.User" />
+
+        <variable
+            name="listener"
+            type="id.ubaya.a160419033_ubayakost.view.ProfileUpdateCLickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +47,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={user.name}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +67,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editHomeTown"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={user.hometown}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -83,7 +89,8 @@
                 android:id="@+id/editPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:text="@={user.phone_number}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -93,6 +100,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="Update"
+            android:onClick="@{(v) -> listener.onUpdateClick(v, user)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 

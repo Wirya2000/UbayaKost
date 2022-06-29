@@ -49,7 +49,7 @@ class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClick
         dataBinding.reviewListener = this
 
         if (arguments != null) {
-            val kostId = KostDetailFragmentArgs.fromBundle(requireArguments()).kostID
+            val kostId = view.tag.toString().toInt()
             viewModel.fetch(kostId.toString())
         }
 
