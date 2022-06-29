@@ -27,15 +27,15 @@ class BookingViewModel(application: Application): AndroidViewModel(application),
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    fun fetch(bookingId: Int?) {
-        if (bookingId == null) {
-            bookingLiveData.value = null
-        } else {
-            launch {
-                val db = buildDb(getApplication())
-                bookingLiveData.value = db.bookingDao().selectBooking(bookingId)
+    fun fetch(userId: Int) {
+        launch {
+            val db = buildDb(getApplication())
+            val fetched = db.bookingDao().selectBooking(userId)
+            if (fetched != null) {
+                bookingLiveData.value = fetched
+            } else {
+                bookingLiveData.value = null
             }
-
         }
     }
 }

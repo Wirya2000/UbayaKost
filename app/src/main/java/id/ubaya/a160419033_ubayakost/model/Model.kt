@@ -52,10 +52,33 @@ data class Review(
     var userId: Int,
     @ColumnInfo(name="review")
     var review: String
-) {
-    @PrimaryKey(autoGenerate = true)
-    var reviewId: Int = 0
-}
+)
+
+//@Entity(primaryKeys = ["kostId", "userId"], foreignKeys = [
+//    ForeignKey(
+//        entity = Kost::class,
+//        parentColumns = ["kostId"],
+//        childColumns = ["kostId"],
+//        onDelete = ForeignKey.CASCADE
+//    ),
+//    ForeignKey(
+//        entity = User::class,
+//        parentColumns = ["userId"],
+//        childColumns = ["userId"],
+//        onDelete = ForeignKey.CASCADE
+//    )
+//])
+//data class Review(
+//    @ColumnInfo(name="kostId")
+//    var kostId: Int,
+//    @ColumnInfo(name="userId")
+//    var userId: Int,
+//    @ColumnInfo(name="review")
+//    var review: String
+//) {
+//    @PrimaryKey(autoGenerate = true)
+//    var reviewId: Int = 0
+//}
 
 data class UserWithKost(
     @Embedded val user: User,
@@ -114,10 +137,7 @@ data class Booking(
     var kostId: Int,
     @ColumnInfo(name="userId")
     var userId: Int
-) {
-    @PrimaryKey(autoGenerate = true)
-    var bookingId: Int = 0
-}
+)
 
 data class UserWithKostBooking(
     @Embedded val user: User,

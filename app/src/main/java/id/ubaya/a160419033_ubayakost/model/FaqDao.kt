@@ -8,7 +8,7 @@ interface FaqDao {
     suspend fun inserAll(vararg faq: FAQ)
 
     @Query("SELECT * FROM faq")
-    suspend fun selectAllFAQ(): List<Review>
+    suspend fun selectAllFAQ(): List<FAQ>
 
     @Query("SELECT * FROM faq WHERE faqId= :id")
     suspend fun selectFAQ(id:Int): FAQ

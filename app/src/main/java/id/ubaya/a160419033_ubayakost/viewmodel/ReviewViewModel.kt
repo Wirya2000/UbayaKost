@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class ReviewViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
-    val reviewsLiveData = MutableLiveData<ArrayList<Review>>()
+    val reviewsLiveData = MutableLiveData<List<Review>>()
     val reviewsLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     private var job = Job()
@@ -32,7 +32,7 @@ class ReviewViewModel(application: Application): AndroidViewModel(application), 
 
         launch {
             val db = buildDb(getApplication())
-            reviewsLiveData.value = db.reviewDao().selectAllReview(kostId)
+            reviewsLiveData.value = db.reviewDao().selectAllReview()
         }
     }
 }

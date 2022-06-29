@@ -36,7 +36,7 @@ class QuestionListAdapter(val faqList: ArrayList<FAQ>) :
 
     override fun getItemCount() = faqList.size
 
-    fun updateFAQList(newFAQList: ArrayList<FAQ>) {
+    fun updateFAQList(newFAQList: List<FAQ>) {
         faqList.clear()
         faqList.addAll(newFAQList)
         notifyDataSetChanged()

@@ -25,7 +25,7 @@ class ReviewAdapter (val reviewList: ArrayList<Review>) : RecyclerView.Adapter<R
 
     override fun getItemCount() = reviewList.size
 
-    fun updateReviewList(newReviewList: ArrayList<Review>) {
+    fun updateReviewList(newReviewList: List<Review>) {
         reviewList.clear()
         reviewList.addAll(newReviewList)
         notifyDataSetChanged()

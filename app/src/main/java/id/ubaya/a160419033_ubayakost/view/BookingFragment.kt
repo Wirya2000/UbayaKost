@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ubaya.a160419033_ubayakost.R
+import id.ubaya.a160419033_ubayakost.databinding.FragmentBookingBinding
+import id.ubaya.a160419033_ubayakost.databinding.FragmentKostDetailBinding
 import id.ubaya.a160419033_ubayakost.util.loadImage
 import id.ubaya.a160419033_ubayakost.viewmodel.BookingViewModel
 import kotlinx.android.synthetic.main.fragment_booking.*
@@ -19,6 +21,8 @@ class BookingFragment : Fragment() {
         var SHARED_BOOKING_ID = "SHARED_BOOKING_ID"
     }
     private lateinit var viewModel: BookingViewModel
+    private lateinit var dataBinding: FragmentBookingBinding
+    private val binding get() = dataBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,15 +34,12 @@ class BookingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
+        viewModel.fetch(1)
 
-        val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
-        val bookingID = sharedPreferences.getString(KostDetailFragment.SHARED_BOOKING_ID, null)
-        viewModel.fetch(bookingID)
-
-        observeViewModel()
+        observeViewModel(view.tag.toString().toInt())
     }
 
-    private fun observeViewModel() {
+    private fun observeViewModel(kostId: Int) {
         viewModel.bookingLiveData.observe(viewLifecycleOwner) {
             val bookingKost = it
             if (bookingKost == null) {
@@ -49,14 +50,11 @@ class BookingFragment : Fragment() {
                     textInfoBooking.visibility = View.GONE
                     cardKost.visibility = View.VISIBLE
 
+                    dataBinding.booking = it
                     cardKost.setOnClickListener{
-                        val action = BookingFragmentDirections.actionItemBookingToKostDetailFragment(bookingKost.id)
+                        val action = BookingFragmentDirections.actionItemBookingToKostDetailFragment(kostId)
                         Navigation.findNavController(it).navigate(action)
                     }
-                    textReview.text = it.name
-                    textGender.text = it.gender
-                    textRegion.text = it.region
-                    imageKost.loadImage(it.photoUrl, progressLoadImageKost)
                 }
             }
         }

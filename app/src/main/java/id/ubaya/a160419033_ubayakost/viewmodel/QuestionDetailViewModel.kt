@@ -20,14 +20,16 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class QuestionDetailViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
-    val questionsLiveData = MutableLiveData<ArrayList<Question>>()
+    val questionsLiveData = MutableLiveData<List<Question>>()
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
     fun fetch(faqId: Int) {
-        val db = buildDb(getApplication())
-        questionsLiveData.value = db.questionDao().selectAllQuestion(faqId)
+        launch {
+            val db = buildDb(getApplication())
+            questionsLiveData.value = db.questionDao().selectQuestion(faqId)
+        }
     }
 }

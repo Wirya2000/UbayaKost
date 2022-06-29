@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ubaya.a160419033_ubayakost.R
+import id.ubaya.a160419033_ubayakost.model.Kost
 import id.ubaya.a160419033_ubayakost.viewmodel.KostListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
 import kotlinx.android.synthetic.main.kost_list_item.*

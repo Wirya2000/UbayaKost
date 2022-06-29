@@ -27,7 +27,7 @@ RecyclerView.Adapter<QuestionDetailAdapter.QuestionViewHolder>() {
         holder.view.question = questionList[position]
     }
 
-    fun updateQuestionList(newQuestionList: ArrayList<Question>) {
+    fun updateQuestionList(newQuestionList: List<Question>) {
         questionList.clear()
         questionList.addAll(newQuestionList)
         notifyDataSetChanged()

@@ -41,7 +41,7 @@ class KostListAdapter(val kostList: ArrayList<Kost>) : RecyclerView.Adapter<Kost
 
     override fun getItemCount() = kostList.size
 
-    fun updateKostList(newKostList: ArrayList<Kost>) {
+    fun updateKostList(newKostList: List<Kost>) {
         kostList.clear()
         kostList.addAll(newKostList)
         notifyDataSetChanged()

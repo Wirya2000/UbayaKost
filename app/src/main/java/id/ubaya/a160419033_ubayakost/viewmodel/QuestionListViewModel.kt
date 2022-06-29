@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class QuestionListViewModel (application: Application): AndroidViewModel(application), CoroutineScope {
-    val faqsLiveData = MutableLiveData<ArrayList<FAQ>>()
+    val faqsLiveData = MutableLiveData<List<FAQ>>()
     val faqsLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     private var job = Job()
@@ -33,7 +33,7 @@ class QuestionListViewModel (application: Application): AndroidViewModel(applica
 
         launch { 
             val db = buildDb(getApplication())
-            faqsLiveData.value = db.faqDao().selectAllFaq()
+            faqsLiveData.value = db.faqDao().selectAllFAQ()
         }
     }
 }

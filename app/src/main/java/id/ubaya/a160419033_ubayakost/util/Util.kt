@@ -16,7 +16,7 @@ val DB_NAME = "ubayakostdb"
 
 fun buildDb(context: Context) =
     Room.databaseBuilder(context, UbayaKostDatabase::class.java, DB_NAME)
-        .addMigrations()
+        .addMigrations(MIGRATION_1_2)
         .build()
 
 val MIGRATION_1_2 = object : Migration(1, 2) {
