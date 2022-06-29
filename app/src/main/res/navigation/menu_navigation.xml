@@ -84,14 +84,8 @@
         android:label="Location"
         tools:layout="@layout/fragment_map" >
         <argument
-            android:name="x"
-            android:defaultValue="-7.3198136612490625" />
-        <argument
-            android:name="y"
-            android:defaultValue="112.76811956063706" />
-        <argument
-            android:name="place"
+            android:name="kostId"
             app:argType="string"
-            android:defaultValue="UBAYA" />
+            app:nullable="true" />
     </fragment>
 </navigation>

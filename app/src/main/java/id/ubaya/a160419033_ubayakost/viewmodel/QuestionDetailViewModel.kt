@@ -30,11 +30,4 @@ class QuestionDetailViewModel(application: Application): AndroidViewModel(applic
         val db = buildDb(getApplication())
         questionsLiveData.value = db.questionDao().selectAllQuestion(faqId)
     }
-
-    fun addKostToBooking(list: List<Kost>) {
-        launch {
-            val db = buildDb(getApplication())
-            db.bookingDao.insertAll(*list.toTypedArray())
-        }
-    }
 }
