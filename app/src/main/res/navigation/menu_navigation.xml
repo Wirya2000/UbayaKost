@@ -67,7 +67,7 @@
         android:label="Questions"
         tools:layout="@layout/fragment_question_detail">
         <argument
-            android:name="id"
+            android:name="faqID"
             app:argType="integer" />
     </fragment>
     <fragment
@@ -75,7 +75,7 @@
         android:name="id.ubaya.a160419033_ubayakost.view.ReviewFragment"
         android:label="Review"
         tools:layout="@layout/fragment_review" >
-        <argument android:name="id"
+        <argument android:name="kostID"
             app:argType="integer" />
     </fragment>
     <fragment

@@ -13,7 +13,7 @@ interface QuestionDao {
     @Query("SELECT * FROM question " +
             "INNER JOIN faq ON faq.faqId = question.faqQuestionId " +
             "WHERE faqQuestionId= :id")
-    suspend fun selectQuestion(id:Int): Booking
+    suspend fun selectQuestion(id:Int): List<Question>
 
     @Query("SELECT * FROM question WHERE questionId= :id")
     suspend fun selectQuestionId(id:Int): Question
