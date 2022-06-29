@@ -34,7 +34,7 @@ data class Kost(
 @Entity
 data class User(
     @ColumnInfo(name="name")
-    var topic: String,
+    var name: String,
     @ColumnInfo(name="hometown")
     var hometown: String,
     @ColumnInfo(name="phone_number")

@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_kost_list.*
 
 class QuestionDetailFragment : Fragment() {
     private lateinit var viewModel: QuestionDetailViewModel
-    private val questionDetailAdapter: QuestionDetailAdapter(arrayListOf())
+    private val questionDetailAdapter = QuestionDetailAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class QuestionDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(QuestionDetailViewModel::class.java)
-        viewModel.refresh()
+        viewModel.fetch(view.tag.toString().toInt())
 
         recView.layoutManager = LinearLayoutManager(context)
         recView.adapter = questionDetailAdapter

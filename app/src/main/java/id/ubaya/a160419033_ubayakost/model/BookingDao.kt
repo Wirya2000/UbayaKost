@@ -10,7 +10,7 @@ interface BookingDao {
     @Query("SELECT * FROM booking " +
             "INNER JOIN user ON booking.userId = user.userId " +
             "INNER JOIN kost ON booking.kostId = kost.kostId")
-    suspend fun selectAllBooking(): List<UserWithKostBooking>
+    suspend fun selectAllBooking(): List<Booking>
 
     @Query("SELECT * FROM booking " +
             "INNER JOIN user ON booking.userId = user.userId " +

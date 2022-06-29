@@ -26,7 +26,7 @@ class QuestionDetailViewModel(application: Application): AndroidViewModel(applic
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    fun fetch(faqId: String) {
+    fun fetch(faqId: Int) {
         val db = buildDb(getApplication())
         questionsLiveData.value = db.questionDao().selectAllQuestion(faqId)
     }
