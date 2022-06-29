@@ -23,7 +23,7 @@ abstract class UbayaKostDatabase:RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 UbayaKostDatabase::class.java,
-                "newtododb"
+                "ubayakostdb"
             )
                 .addMigrations(MIGRATION_1_2)
                 .build()

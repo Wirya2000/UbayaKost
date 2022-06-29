@@ -1,5 +1,6 @@
 package id.ubaya.a160419033_ubayakost.view
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,13 +12,24 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ubaya.a160419033_ubayakost.R
 import id.ubaya.a160419033_ubayakost.model.Kost
+import id.ubaya.a160419033_ubayakost.util.buildDb
 import id.ubaya.a160419033_ubayakost.viewmodel.KostListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
 import kotlinx.android.synthetic.main.kost_list_item.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import java.lang.reflect.Array.get
+import kotlin.coroutines.CoroutineContext
 
-class KostListFragment : Fragment() {
+class KostListFragment : Fragment(), CoroutineScope {
     private lateinit var viewModel: KostListViewModel
     private val kostListAdapter = KostListAdapter(arrayListOf())
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,10 +56,7 @@ class KostListFragment : Fragment() {
             refreshLayout.isRefreshing = false
         }
 
-        cardKost.setOnClickListener {
-            val action = KostListFragmentDirections.actionItemExploreToKostDetailFragment(view.tag.toString().toInt())
-            Navigation.findNavController(it).navigate(action)
-        }
+//
 
         observeViewModel()
     }
