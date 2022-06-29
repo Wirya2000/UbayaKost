@@ -8,8 +8,8 @@ interface ReviewDao {
     suspend fun inserAll(vararg review: Review)
 
     @Query("SELECT *, u.name FROM review " +
-            "INNER JOIN user AS u ON review.userId = u.userId " +
-            "INNER JOIN kost ON review.kostId = kost.kostId")
+            "INNER JOIN user AS u ON review.userReviewId = u.userId " +
+            "INNER JOIN kost ON review.kostReviewId = kost.kostId")
     suspend fun selectAllReview(): List<Review>
 
 //    @Query("SELECT * FROM review " +
@@ -18,7 +18,7 @@ interface ReviewDao {
 //            "WHERE reviewId= :id")
 //    suspend fun selectReview(id:Int): Review
 
-    @Query("UPDATE review SET kostId = :kostId, userId = :userId, review = :review")
+    @Query("UPDATE review SET kostReviewId = :kostId, userReviewId = :userId, review = :review")
     suspend fun update(kostId: Int, userId: Int, review: String)
 
     @Delete

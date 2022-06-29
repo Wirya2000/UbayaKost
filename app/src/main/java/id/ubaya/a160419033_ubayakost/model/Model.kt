@@ -44,27 +44,34 @@ data class User(
     var userId: Int = 0
 }
 
-@Entity(primaryKeys = ["kostId", "userId"], foreignKeys = [
+@Entity(primaryKeys = ["kostReviewId", "userReviewId"], foreignKeys = [
     ForeignKey(
         entity = Kost::class,
         parentColumns = ["kostId"],
-        childColumns = ["kostId"],
+        childColumns = ["kostReviewId"],
         onDelete = ForeignKey.CASCADE
     ),
     ForeignKey(
         entity = User::class,
         parentColumns = ["userId"],
-        childColumns = ["userId"],
+        childColumns = ["userReviewId"],
         onDelete = ForeignKey.CASCADE
     )
 ])
 data class Review(
-    @ColumnInfo(name="kostId")
-    var kostId: Int,
-    @ColumnInfo(name="userId")
-    var userId: Int,
+    @ColumnInfo(name="kostReviewId")
+    var kostReviewId: Int,
+    @ColumnInfo(name="userReviewId")
+    var userReviewId: Int,
     @ColumnInfo(name="review")
     var review: String
+)
+
+data class ReviewWithUser(
+    @Embedded(prefix="userEmbedded")
+    var user:User,
+    @Embedded(prefix="reviewEmbedded")
+    val review:Review
 )
 
 //@Entity(primaryKeys = ["kostId", "userId"], foreignKeys = [
@@ -93,41 +100,24 @@ data class Review(
 //    var reviewId: Int = 0
 //}
 
-data class UserWithKost(
-    @Embedded val user: User,
-    @Relation(
-        parentColumn = "userId",
-        entityColumn = "kostId",
-        associateBy = Junction(Review::class)
-    )
-    val kosts: List<Kost>
-)
-
-data class KostWithUser(
-    @Embedded val kost: Kost,
-    @Relation(
-        parentColumn = "kostId",
-        entityColumn = "userId",
-        associateBy = Junction(Review::class)
-    )
-    val users: List<User>
-)
-
-//@Entity(primaryKeys = ["faqQuestionId"], foreignKeys = [
-//    ForeignKey(
-//        entity = FAQ::class,
-//        parentColumns = ["faqId"],
-//        childColumns = ["faqQuestionId"],
-//        onDelete = ForeignKey.CASCADE
+//data class UserWithKost(
+//    @Embedded val user: User,
+//    @Relation(
+//        parentColumn = "userId",
+//        entityColumn = "kostId",
+//        associateBy = Junction(Review::class)
 //    )
-//])
-//data class Question(
-//    @ColumnInfo(name="faqQuestionId")
-//    var faqQuestionId: Int,
-//    @ColumnInfo(name="question")
-//    var question: String,
-//    @ColumnInfo(name="answer")
-//    var answer: String
+//    val kosts: List<Kost>
+//)
+//
+//data class KostWithUser(
+//    @Embedded val kost: Kost,
+//    @Relation(
+//        parentColumn = "kostId",
+//        entityColumn = "userId",
+//        associateBy = Junction(Review::class)
+//    )
+//    val users: List<User>
 //)
 
 @Entity
@@ -139,7 +129,14 @@ data class FAQ(
     var faqId: Int = 0
 }
 
-@Entity
+@Entity(foreignKeys = [
+    ForeignKey(
+        entity = FAQ::class,
+        parentColumns = ["faqId"],
+        childColumns = ["faqQuestionId"],
+        onDelete = ForeignKey.CASCADE
+    )
+])
 data class Question(
     @ColumnInfo(name="faqQuestionId")
     var faqQuestionId: Int,
@@ -147,19 +144,31 @@ data class Question(
     var question: String,
     @ColumnInfo(name="answer")
     var answer: String,
-) {
     @PrimaryKey(autoGenerate = true)
-    var questionId: Int = 0
-}
-
-data class FaqWithPlaylist(
-    @Embedded val faq: FAQ,
-    @Relation(
-        parentColumn = "faqId",
-        entityColumn = "faqQuestionId"
-    )
-    val questions: List<Question>
+    val questionId: Int = 0
 )
+
+//@Entity
+//data class Question(
+//    @ColumnInfo(name="faqQuestionId")
+//    var faqQuestionId: Int,
+//    @ColumnInfo(name="question")
+//    var question: String,
+//    @ColumnInfo(name="answer")
+//    var answer: String,
+//) {
+//    @PrimaryKey(autoGenerate = true)
+//    var questionId: Int = 0
+//}
+
+//data class FaqWithPlaylist(
+//    @Embedded val faq: FAQ,
+//    @Relation(
+//        parentColumn = "faqId",
+//        entityColumn = "faqQuestionId"
+//    )
+//    val questions: List<Question>
+//)
 
 @Entity(primaryKeys = ["kostId", "userId"])
 data class Booking(
@@ -169,22 +178,22 @@ data class Booking(
     var userId: Int
 )
 
-data class UserWithKostBooking(
-    @Embedded val user: User,
-    @Relation(
-        parentColumn = "userId",
-        entityColumn = "kostId",
-        associateBy = Junction(Booking::class)
-    )
-    val kosts: List<Kost>
-)
-
-data class KostWithUserBooking(
-    @Embedded val kost: Kost,
-    @Relation(
-        parentColumn = "kostId",
-        entityColumn = "userId",
-        associateBy = Junction(Booking::class)
-    )
-    val users: List<User>
-)
+//data class UserWithKostBooking(
+//    @Embedded val user: User,
+//    @Relation(
+//        parentColumn = "userId",
+//        entityColumn = "kostId",
+//        associateBy = Junction(Booking::class)
+//    )
+//    val kosts: List<Kost>
+//)
+//
+//data class KostWithUserBooking(
+//    @Embedded val kost: Kost,
+//    @Relation(
+//        parentColumn = "kostId",
+//        entityColumn = "userId",
+//        associateBy = Junction(Booking::class)
+//    )
+//    val users: List<User>
+//)

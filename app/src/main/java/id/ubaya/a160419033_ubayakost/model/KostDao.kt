@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface KostDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun inserAll(vararg kost: Kost)
+    suspend fun insertAll(vararg kost: Kost)
 
     @Query("SELECT * FROM kost")
     suspend fun selectAllKost(): List<Kost>
@@ -64,21 +64,21 @@ interface KostDao {
     suspend fun insert9()
 
     // Review
-    @Query("INSERT INTO review(kostId, userId, review) VALUES(1, 1, 'Lumayan bagus, ramah, dan dekat kemana-mana')")
+    @Query("INSERT INTO review(kostReviewId, userReviewId, review) VALUES(1, 1, 'Lumayan bagus, ramah, dan dekat kemana-mana')")
     suspend fun insert10()
-    @Query("INSERT INTO review(kostId, userId, review) VALUES(1, 2, 'Peralatan cukup lengkap')")
+    @Query("INSERT INTO review(kostReviewId, userReviewId, review) VALUES(1, 2, 'Peralatan cukup lengkap')")
     suspend fun insert11()
-    @Query("INSERT INTO review(kostId, userId, review) VALUES(2, 2, 'Kos dekat dengan kampus')")
+    @Query("INSERT INTO review(kostReviewId, userReviewId, review) VALUES(2, 2, 'Kos dekat dengan kampus')")
     suspend fun insert12()
-    @Query("INSERT INTO review(kostId, userId, review) VALUES(3, 1, 'Fasilitas memuaskan')")
+    @Query("INSERT INTO review(kostReviewId, userReviewId, review) VALUES(3, 1, 'Fasilitas memuaskan')")
     suspend fun insert13()
-    @Query("INSERT INTO review(kostId, userId, review) VALUES(4, 3, 'Kos dan fasilitas bagus')")
+    @Query("INSERT INTO review(kostReviewId, userReviewId, review) VALUES(4, 3, 'Kos dan fasilitas bagus')")
     suspend fun insert14()
-    @Query("INSERT INTO review(kostId, userId, review) VALUES(4, 4, 'Kos bagus dan sesuai dengan harga')")
+    @Query("INSERT INTO review(kostReviewId, userReviewId, review) VALUES(4, 4, 'Kos bagus dan sesuai dengan harga')")
     suspend fun insert15()
-    @Query("INSERT INTO review(kostId, userId, review) VALUES(4, 5, 'Bagus, bersih, dan nyaman')")
+    @Query("INSERT INTO review(kostReviewId, userReviewId, review) VALUES(4, 5, 'Bagus, bersih, dan nyaman')")
     suspend fun insert16()
-    @Query("INSERT INTO review(kostId, userId, review) VALUES(4, 2, 'Hunian nyaman dan terletak di perumahan tengah kota dan aman')")
+    @Query("INSERT INTO review(kostReviewId, userReviewId, review) VALUES(4, 2, 'Hunian nyaman dan terletak di perumahan tengah kota dan aman')")
     suspend fun insert17()
 
     // FAQ
