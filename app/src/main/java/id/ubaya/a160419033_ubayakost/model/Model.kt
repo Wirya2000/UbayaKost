@@ -44,7 +44,20 @@ data class User(
     var userId: Int = 0
 }
 
-@Entity(primaryKeys = ["kostId", "userId"])
+@Entity(primaryKeys = ["kostId", "userId"], foreignKeys = [
+    ForeignKey(
+        entity = Kost::class,
+        parentColumns = ["kostId"],
+        childColumns = ["kostId"],
+        onDelete = ForeignKey.CASCADE
+    ),
+    ForeignKey(
+        entity = User::class,
+        parentColumns = ["userId"],
+        childColumns = ["userId"],
+        onDelete = ForeignKey.CASCADE
+    )
+])
 data class Review(
     @ColumnInfo(name="kostId")
     var kostId: Int,
@@ -100,6 +113,23 @@ data class KostWithUser(
     val users: List<User>
 )
 
+//@Entity(primaryKeys = ["faqQuestionId"], foreignKeys = [
+//    ForeignKey(
+//        entity = FAQ::class,
+//        parentColumns = ["faqId"],
+//        childColumns = ["faqQuestionId"],
+//        onDelete = ForeignKey.CASCADE
+//    )
+//])
+//data class Question(
+//    @ColumnInfo(name="faqQuestionId")
+//    var faqQuestionId: Int,
+//    @ColumnInfo(name="question")
+//    var question: String,
+//    @ColumnInfo(name="answer")
+//    var answer: String
+//)
+
 @Entity
 data class FAQ(
     @ColumnInfo(name="topic")
@@ -114,11 +144,11 @@ data class Question(
     @ColumnInfo(name="faqQuestionId")
     var faqQuestionId: Int,
     @ColumnInfo(name="question")
-    var question: Int,
+    var question: String,
     @ColumnInfo(name="answer")
-    var answer: Int,
+    var answer: String,
 ) {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     var questionId: Int = 0
 }
 
