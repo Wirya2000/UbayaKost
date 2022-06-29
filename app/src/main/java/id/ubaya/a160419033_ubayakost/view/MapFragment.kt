@@ -28,11 +28,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val latitude: Double = MapFragmentArgs.fromBundle(requireArguments()).x.toDouble()
-        val longitude: Double = MapFragmentArgs.fromBundle(requireArguments()).y.toDouble()
-        val place: String = MapFragmentArgs.fromBundle(requireArguments()).place
+        val id: String? = MapFragmentArgs.fromBundle(requireArguments()).kostId
         viewModel = ViewModelProvider(this).get(MapViewModel::class.java)
-        viewModel.fetch(latitude, longitude, place)
+        viewModel.fetch(id)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -42,11 +40,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         viewModel.mapLiveData.observe(viewLifecycleOwner) {
             googleMap.addMarker(
                 MarkerOptions()
-                    .position(LatLng(it.latitude, it.longitude))
-                    .title(it.place)
+                    .position(LatLng(it.x.toDouble(), it.y.toDouble()))
+                    .title(it.name)
             )
             var zoomLevel: Float = 16.0f
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(it.latitude, it.longitude), zoomLevel))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(it.x.toDouble(), it.y.toDouble()), zoomLevel))
         }
 
     }

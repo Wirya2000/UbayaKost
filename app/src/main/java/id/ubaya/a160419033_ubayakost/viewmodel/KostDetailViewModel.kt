@@ -31,4 +31,11 @@ class KostDetailViewModel(application: Application): AndroidViewModel(applicatio
             kostLiveData.value = db.kostDao().selectKost(kostId)
         }
     }
+
+    fun addKostToBooking(list: List<Kost>) {
+        launch {
+            val db = buildDb(getApplication())
+            db.bookingDao.insertAll(*list.toTypedArray())
+        }
+    }
 }
