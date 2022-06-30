@@ -25,18 +25,6 @@ class KostListAdapter(val kostList: ArrayList<Kost>) : RecyclerView.Adapter<Kost
     override fun onBindViewHolder(holder: KostViewHolder, position: Int) {
         holder.view.kost = kostList[position]
         holder.view.listener = this
-
-//        with(holder.view) {
-//            textName.text = kost.name
-//            textGender.text = kost.gender
-//            textRegion.text = kost.region
-//            textPrice.text = "Rp ${kost.price}"
-//            imageKost.loadImage(kost.photoUrl, progressLoadingKostImage)
-//            cardKost.setOnClickListener {
-//                val action = KostListFragmentDirections.actionItemExploreToKostDetailFragment(kost.id)
-//                Navigation.findNavController(it).navigate(action)
-//            }
-//        }
     }
 
     override fun getItemCount() = kostList.size

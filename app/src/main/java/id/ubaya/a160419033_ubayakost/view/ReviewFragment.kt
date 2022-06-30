@@ -30,7 +30,7 @@ class ReviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val kostId = ReviewFragmentArgs.fromBundle(requireArguments()).kostID
-//        var kostId = view.tag.toString().toInt()
+
         viewModel = ViewModelProvider(this).get(ReviewViewModel::class.java)
         viewModel.refresh(kostId)
 

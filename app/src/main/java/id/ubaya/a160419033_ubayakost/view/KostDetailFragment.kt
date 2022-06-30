@@ -60,35 +60,6 @@ class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClick
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner) {
             dataBinding.kost = it
-//            var kost = it
-//            imageViewKostDetail.loadImage(it.photoUrl, progressLoadKostDetailImage)
-//            textName.text = it.name
-//            textGender.text = "Kos ${it.gender}"
-//            textRegion.text = it.region
-//            textAlamat.text = it.alamat
-//            imageButtonAlamat.setOnClickListener {
-//                val action = KostDetailFragmentDirections.actionToMapFragment(kost.x.toFloat(), kost.y.toFloat(), kost.name)
-//                Navigation.findNavController(it).navigate(action)
-//            }
-//            textFasilitas.text = it.fasilitas
-//            textLuasKamar.text = it.luas
-//            textPeraturan.text = it.peraturan
-//            buttonReview.setOnClickListener {
-//                val action = KostDetailFragmentDirections.actionToReviewFragment(kost.kostId)
-//                Navigation.findNavController(it).navigate(action)
-//            }
-//            textBookingPrice.text = "Rp ${it.price} / bulan"
-//            buttonBooking.setOnClickListener {
-////                val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
-////                sharedPreferences.edit {
-////                    putString(SHARED_BOOKING_ID, kost.id.toString())
-////                }
-
-//
-//                val builder = AlertDialog.Builder(context)
-//                builder.setMessage("Booking has been made, Please check your booking at My Booking section")
-//                builder.setPositiveButton("OK", null)
-//                builder.create().show()
             }
         }
 

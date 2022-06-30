@@ -25,14 +25,6 @@ class QuestionListAdapter(val faqList: ArrayList<FAQ>) :
     override fun onBindViewHolder(holder: FAQViewHolder, position: Int) {
         holder.view.faq = faqList[position]
         holder.view.listener = this
-//        val faq = faqList[position]
-//        with(holder.view) {
-//            textTopic.text = faq.topic
-//            cardFAQ.setOnClickListener {
-//                val action = QuestionListFragmentDirections.actionQuestionDetail(faq.id)
-//                Navigation.findNavController(it).navigate(action)
-//            }
-//        }
     }
 
     override fun getItemCount() = faqList.size
