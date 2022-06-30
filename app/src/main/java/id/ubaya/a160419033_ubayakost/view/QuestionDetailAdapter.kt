@@ -1,6 +1,7 @@
 package id.ubaya.a160419033_ubayakost.view
 
 import android.net.ipsec.ike.TunnelModeChildSessionParams
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

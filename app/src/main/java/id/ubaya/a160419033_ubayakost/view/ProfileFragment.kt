@@ -40,6 +40,8 @@ class ProfileFragment : Fragment(), ProfileUpdateCLickListener {
 
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
+        viewModel.fetch(1)
+
         observeViewModel()
     }
 

@@ -108,4 +108,6 @@ interface KostDao {
     @Query("INSERT INTO question(faqQuestionId, questionId, question, answer) VALUES(3, NULL, 'When will UbayaKost refund the deposit payment?', " +
             "'The refund deposit process for daily orders using bank transfer or virtual account is estimated to be received again by the customer no later than 5 working days after the bank data is confirmed. The invoice will be used to calculate usage during your rental at the Travelio unit. After the invoice is issued, UbayaKost takes approximately 7 working days for detailed calculations. Please be willing to wait for the process.')")
     suspend fun insert26()
+    @Query("INSERT INTO booking(kostBookingId, userBookingId) VALUES(1, 1)")
+    suspend fun insert27()
 }

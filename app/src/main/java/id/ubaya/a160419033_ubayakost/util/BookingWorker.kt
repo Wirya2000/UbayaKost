@@ -13,5 +13,4 @@ class BookingWorker(val context: Context, val params: WorkerParameters)
                 inputData.getString("message").toString())
         return Result.success()
     }
-
 }

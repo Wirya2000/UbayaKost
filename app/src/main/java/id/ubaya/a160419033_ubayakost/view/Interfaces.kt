@@ -25,6 +25,11 @@ interface KostBookingClickListener {
     fun onBookingClick(v:View, obj:Kost)
 }
 
+// KOST DETAIL
+interface MapClickListener {
+    fun onMapClick(v:View, obj:Kost)
+}
+
 // PROFILE
 interface ProfileUpdateCLickListener {
     fun onUpdateClick(v:View, obj: User)

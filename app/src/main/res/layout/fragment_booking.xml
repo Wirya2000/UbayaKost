@@ -6,7 +6,7 @@
     <data>
         <variable
             name="booking"
-            type="id.ubaya.a160419033_ubayakost.model.Booking" />
+            type="id.ubaya.a160419033_ubayakost.model.BookingWithKost" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,6 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:tag="@{booking.kostId}"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +34,8 @@
                     android:id="@+id/imageKost"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
+                    android:imageUrl="@{booking.kost.photoUrl}"
+                    android:progressBar="@{progressLoadImageKost}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Kost Name"
+                    android:text="@{booking.kost.name}"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textGender"
@@ -55,7 +56,7 @@
                     android:id="@+id/textRegion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kost Region"
+                    android:text="@{booking.kost.region}"
                     app:layout_constraintStart_toStartOf="@+id/textReview"
                     app:layout_constraintTop_toBottomOf="@+id/textReview" />
 
@@ -66,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Kost For"
+                    android:text="@{booking.kost.gender}"
                     android:background="@drawable/textview_border"
                     android:padding="4dp"
                     app:layout_constraintStart_toStartOf="parent"

@@ -33,10 +33,10 @@ class KostDetailViewModel(application: Application): AndroidViewModel(applicatio
         }
     }
 
-    fun addKostToBooking(obj: Kost) {
+    fun updateKostToBooking(obj: Kost) {
         launch {
             val db = buildDb(getApplication())
-            db.bookingDao().insertAll(obj)
+            db.bookingDao().update(obj.kostId, 1)
         }
     }
 }

@@ -33,7 +33,7 @@ class ReviewViewModel(application: Application): AndroidViewModel(application), 
 
         launch {
             val db = buildDb(getApplication())
-            reviewsLiveData.value = db.reviewDao().selectAllReview()
+            reviewsLiveData.value = db.reviewDao().selectAllReview(kostId)
         }
     }
 }

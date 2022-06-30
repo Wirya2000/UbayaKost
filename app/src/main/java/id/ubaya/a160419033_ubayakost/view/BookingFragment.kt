@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ubaya.a160419033_ubayakost.R
@@ -15,6 +16,7 @@ import id.ubaya.a160419033_ubayakost.databinding.FragmentKostDetailBinding
 import id.ubaya.a160419033_ubayakost.util.loadImage
 import id.ubaya.a160419033_ubayakost.viewmodel.BookingViewModel
 import kotlinx.android.synthetic.main.fragment_booking.*
+import kotlinx.android.synthetic.main.fragment_kost_list.*
 
 class BookingFragment : Fragment() {
     companion object {
@@ -29,33 +31,31 @@ class BookingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_booking, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentBookingBinding>(inflater, R.layout.fragment_booking,
+            container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
         viewModel.fetch(1)
 
-        observeViewModel(view.tag.toString().toInt())
+        observeViewModel()
     }
 
-    private fun observeViewModel(kostId: Int) {
+    private fun observeViewModel() {
         viewModel.bookingLiveData.observe(viewLifecycleOwner) {
-            val bookingKost = it
-            if (bookingKost == null) {
-                textInfoBooking.visibility = View.VISIBLE
-                cardKost.visibility = View.GONE
-            } else {
-                bookingKost?.let {
+            if (it != null) {
+                it?.let {
                     textInfoBooking.visibility = View.GONE
                     cardKost.visibility = View.VISIBLE
 
                     dataBinding.booking = it
-                    cardKost.setOnClickListener{
-                        val action = BookingFragmentDirections.actionItemBookingToKostDetailFragment(kostId)
-                        Navigation.findNavController(it).navigate(action)
-                    }
                 }
+            }
+            else {
+                textInfoBooking.visibility = View.VISIBLE
+                cardKost.visibility = View.GONE
             }
         }
     }

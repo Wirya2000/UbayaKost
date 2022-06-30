@@ -12,6 +12,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.ubaya.a160419033_ubayakost.model.Booking
 import id.ubaya.a160419033_ubayakost.model.BookingDao
+import id.ubaya.a160419033_ubayakost.model.BookingWithKost
 import id.ubaya.a160419033_ubayakost.model.Kost
 import id.ubaya.a160419033_ubayakost.util.buildDb
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +22,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class BookingViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
-    val bookingLiveData = MutableLiveData<Booking?>()
+    val bookingLiveData = MutableLiveData<BookingWithKost>()
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
@@ -30,7 +31,7 @@ class BookingViewModel(application: Application): AndroidViewModel(application),
     fun fetch(userId: Int) {
         launch {
             val db = buildDb(getApplication())
-            val fetched = db.bookingDao().selectBooking(userId)
+            val fetched = db.bookingDao().selectAllBooking(userId)
             if (fetched != null) {
                 bookingLiveData.value = fetched
             } else {

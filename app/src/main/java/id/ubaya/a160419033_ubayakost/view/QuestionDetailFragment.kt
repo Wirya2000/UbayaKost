@@ -2,6 +2,7 @@ package id.ubaya.a160419033_ubayakost.view
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +31,19 @@ class QuestionDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(QuestionDetailViewModel::class.java)
-        viewModel.fetch(view.tag.toString().toInt())
+
+        if (arguments != null) {
+            val faqId = QuestionDetailFragmentArgs.fromBundle(requireArguments()).faqID
+            viewModel.fetch(faqId)
+
+            refreshLayout.setOnRefreshListener {
+                recView.visibility = View.GONE
+                textError.visibility = View.GONE
+                progressLoad.visibility = View.VISIBLE
+                viewModel.fetch(faqId)
+                refreshLayout.isRefreshing = false
+            }
+        }
 
         recView.layoutManager = LinearLayoutManager(context)
         recView.adapter = questionDetailAdapter
@@ -41,6 +54,18 @@ class QuestionDetailFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.questionsLiveData.observe(viewLifecycleOwner) {
             questionDetailAdapter.updateQuestionList(it)
+        }
+        viewModel.questionsLoadErrorLiveData.observe(viewLifecycleOwner) {
+            textError.visibility = if (it) View.VISIBLE else View.GONE
+        }
+        viewModel.loadingLiveData.observe(viewLifecycleOwner) {
+            if (it) { // sedang loading
+                recView.visibility = View.GONE
+                progressLoad.visibility = View.VISIBLE
+            } else {
+                recView.visibility = View.VISIBLE
+                progressLoad.visibility = View.GONE
+            }
         }
     }
 }

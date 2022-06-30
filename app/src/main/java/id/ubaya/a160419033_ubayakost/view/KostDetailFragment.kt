@@ -27,10 +27,7 @@ import id.ubaya.a160419033_ubayakost.util.loadImage
 import id.ubaya.a160419033_ubayakost.viewmodel.KostDetailViewModel
 import kotlinx.android.synthetic.main.fragment_kost_detail.*
 
-class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClickListener {
-    companion object {
-        var SHARED_BOOKING_ID = "SHARED_BOOKING_ID"
-    }
+class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClickListener, MapClickListener {
     private lateinit var viewModel: KostDetailViewModel
     private lateinit var dataBinding: FragmentKostDetailBinding
     private val binding get() = dataBinding!!
@@ -49,6 +46,8 @@ class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClick
         viewModel = ViewModelProvider(this).get(KostDetailViewModel::class.java)
 
         dataBinding.reviewListener = this
+        dataBinding.bookingListener = this
+        dataBinding.mapListener = this
 
         if (arguments != null) {
             val kostId = KostDetailFragmentArgs.fromBundle(requireArguments()).kostID
@@ -84,12 +83,7 @@ class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClick
 ////                sharedPreferences.edit {
 ////                    putString(SHARED_BOOKING_ID, kost.id.toString())
 ////                }
-//                val bookingWorkRequest = OneTimeWorkRequestBuilder<BookingWorker>()
-//                    .setInputData(workDataOf(
-//                                    "title" to "Booking has been made",
-//                                    "message" to "Don't forget to complete your payment for the booking that you made"))
-//                    .build()
-//                WorkManager.getInstance(requireContext()).enqueue(bookingWorkRequest)
+
 //
 //                val builder = AlertDialog.Builder(context)
 //                builder.setMessage("Booking has been made, Please check your booking at My Booking section")
@@ -100,12 +94,26 @@ class KostDetailFragment : Fragment(), KostReviewClickListener, KostBookingClick
 
     override fun onBookingClick(v: View, obj: Kost) {
         dataBinding.kost = obj
-        viewModel.addKostToBooking(dataBinding.kost!!)
+
+        viewModel.updateKostToBooking(dataBinding.kost!!)
+
+        val bookingWorkRequest = OneTimeWorkRequestBuilder<BookingWorker>()
+            .setInputData(workDataOf(
+                "title" to "Booking has been made",
+                "message" to "Don't forget to complete your payment for the booking that you made"))
+            .build()
+        WorkManager.getInstance(requireContext()).enqueue(bookingWorkRequest)
     }
 
     override fun onReviewClick(v: View) {
-        val reviewId = v.tag.toString().toInt()
-        val action = KostDetailFragmentDirections.actionToReviewFragment(reviewId)
+        val kostId = v.tag.toString().toInt()
+        val action = KostDetailFragmentDirections.actionToReviewFragment(kostId)
+        Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onMapClick(v: View, obj: Kost) {
+        val kostId = v.tag.toString()
+        val action = KostDetailFragmentDirections.actionToMapFragment(kostId)
         Navigation.findNavController(v).navigate(action)
     }
 }

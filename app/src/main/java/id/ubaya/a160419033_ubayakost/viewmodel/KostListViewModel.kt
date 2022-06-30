@@ -54,6 +54,7 @@ class KostListViewModel(application: Application): AndroidViewModel(application)
 //           db.kostDao().insert24()
 //           db.kostDao().insert25()
 //           db.kostDao().insert26()
+//           db.kostDao().insert27()
        }
     }
 }

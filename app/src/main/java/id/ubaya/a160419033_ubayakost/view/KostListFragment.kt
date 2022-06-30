@@ -55,9 +55,7 @@ class KostListFragment : Fragment(), CoroutineScope {
             viewModel.refresh()
             refreshLayout.isRefreshing = false
         }
-
 //
-
         observeViewModel()
     }
 

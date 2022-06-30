@@ -1,6 +1,7 @@
 package id.ubaya.a160419033_ubayakost.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +29,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val id: String? = MapFragmentArgs.fromBundle(requireArguments()).kostId
+        var id: String? = null
+        if (arguments != null) {
+            id = MapFragmentArgs.fromBundle(requireArguments()).kostId
+        }
+
         viewModel = ViewModelProvider(this).get(MapViewModel::class.java)
         viewModel.fetch(id)
 
