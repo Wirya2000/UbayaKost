@@ -7,10 +7,10 @@ interface ReviewDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun inserAll(vararg review: Review)
 
-    @Query("SELECT *, u.name FROM review " +
-            "INNER JOIN user AS u ON review.userReviewId = u.userId " +
+    @Query("SELECT * FROM review " +
+            "INNER JOIN user ON review.userReviewId = user.userId " +
             "INNER JOIN kost ON review.kostReviewId = kost.kostId")
-    suspend fun selectAllReview(): List<Review>
+    suspend fun selectAllReview(): List<ReviewWithUser>
 
 //    @Query("SELECT * FROM review " +
 //            "INNER JOIN user ON review.userId = user.userId " +

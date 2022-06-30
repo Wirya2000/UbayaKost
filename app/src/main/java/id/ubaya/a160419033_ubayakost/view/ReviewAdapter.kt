@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import id.ubaya.a160419033_ubayakost.R
 import id.ubaya.a160419033_ubayakost.databinding.ReviewListItemBinding
 import id.ubaya.a160419033_ubayakost.model.Review
+import id.ubaya.a160419033_ubayakost.model.ReviewWithUser
 import kotlinx.android.synthetic.main.review_list_item.view.*
 
-class ReviewAdapter (val reviewList: ArrayList<Review>) : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
+class ReviewAdapter (val reviewList: ArrayList<ReviewWithUser>) : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     class ReviewViewHolder(var view: ReviewListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
@@ -25,7 +26,7 @@ class ReviewAdapter (val reviewList: ArrayList<Review>) : RecyclerView.Adapter<R
 
     override fun getItemCount() = reviewList.size
 
-    fun updateReviewList(newReviewList: List<Review>) {
+    fun updateReviewList(newReviewList: List<ReviewWithUser>) {
         reviewList.clear()
         reviewList.addAll(newReviewList)
         notifyDataSetChanged()

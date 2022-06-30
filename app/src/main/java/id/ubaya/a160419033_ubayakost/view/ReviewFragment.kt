@@ -29,7 +29,8 @@ class ReviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var kostId = view.tag.toString().toInt()
+        val kostId = ReviewFragmentArgs.fromBundle(requireArguments()).kostID
+//        var kostId = view.tag.toString().toInt()
         viewModel = ViewModelProvider(this).get(ReviewViewModel::class.java)
         viewModel.refresh(kostId)
 

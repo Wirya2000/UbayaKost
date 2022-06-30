@@ -6,7 +6,7 @@
     <data>
         <variable
             name="review"
-            type="id.ubaya.a160419033_ubayakost.model.Review" />
+            type="id.ubaya.a160419033_ubayakost.model.ReviewWithUser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Name"
+                    android:text="@{review.user.name}"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imagePhoto"
                     app:layout_constraintTop_toTopOf="@+id/imagePhoto" />
@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@{review.review}"
+                    android:text="@{review.review.review}"
                     app:layout_constraintStart_toStartOf="@+id/imagePhoto"
                     app:layout_constraintTop_toBottomOf="@+id/imagePhoto" />
 
