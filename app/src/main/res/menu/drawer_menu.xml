@@ -18,11 +18,6 @@
         android:title="FAQ"
         app:showAsAction="always" />
     <item
-        android:id="@+id/itemMap"
-        android:icon="@drawable/ic_baseline_pin_drop_24"
-        android:title="UBAYA Location"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/itemProfile"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="My Profile"
