@@ -19,13 +19,7 @@
         android:id="@+id/itemBooking"
         android:name="id.ubaya.a160419033_ubayakost.view.BookingFragment"
         android:label="My Booking"
-        tools:layout="@layout/fragment_booking">
-        <action
-            android:id="@+id/action_itemBooking_to_kostDetailFragment"
-            app:destination="@id/kostDetailFragment"
-            app:enterAnim="@android:anim/slide_out_right"
-            app:exitAnim="@android:anim/slide_in_left" />
-    </fragment>
+        tools:layout="@layout/fragment_booking"/>
     <fragment
         android:id="@+id/itemFAQ"
         android:name="id.ubaya.a160419033_ubayakost.view.QuestionListFragment"
